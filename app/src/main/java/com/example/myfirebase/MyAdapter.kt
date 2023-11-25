@@ -1,18 +1,21 @@
 package com.example.myfirebase
 
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.QueryDocumentSnapshot
+import com.google.firebase.ktx.Firebase
 
-data class Item(val id: String, val subject:String,val sale: String, val price: Int) {
+data class Item(val id: String, val subject:String,val sale: String,val content :String, val price: Int) {
     constructor(doc: QueryDocumentSnapshot) :
-            this(doc.id, doc["subject"].toString(),doc["sale"].toString(), doc["price"].toString().toIntOrNull() ?: 0)
+            this(doc.id, doc["subject"].toString(),doc["sale"].toString(),doc["content"].toString(), doc["price"].toString().toIntOrNull() ?: 0)
     constructor(key: String, map: Map<*, *>) :
-            this(key, map["subject"].toString(),map["sale"].toString(), map["price"].toString().toIntOrNull() ?: 0)
+            this(key, map["subject"].toString(),map["sale"].toString(),map["content"].toString(), map["price"].toString().toIntOrNull() ?: 0)
 }
 
 class MyViewHolder(val view: View) : RecyclerView.ViewHolder(view)
@@ -47,17 +50,18 @@ class MyAdapter(private val context: Context, private var items: List<Item>)
         holder.view.findViewById<TextView>(R.id.sale).text = item.sale
         holder.view.findViewById<TextView>(R.id.price).text = item.price.toString()
 
-        holder.view.findViewById<TextView>(R.id.textID).setOnClickListener {
+        holder.view.setOnClickListener {
             itemClickListener?.onItemClick(item.id)
-        }
-        holder.view.findViewById<TextView>(R.id.subject).setOnClickListener {
-            itemClickListener?.onItemClick(item.id)
-        }
-        holder.view.findViewById<TextView>(R.id.sale).setOnClickListener {
-            itemClickListener?.onItemClick(item.id)
-        }
-        holder.view.findViewById<TextView>(R.id.price).setOnClickListener {
-            itemClickListener?.onItemClick(item.id)
+
+            val intent = Intent(context, ItemDetailsActivity::class.java)
+            intent.putExtra("ITEM_ID", item.id) // 아이템 정보를 인텐트에 담아 전달할 수 있습니다.
+            intent.putExtra("ITEM_SUB", item.subject) // 아이템 정보를 인텐트에 담아 전달할 수 있습니다.
+            intent.putExtra("ITEM_SALE", item.sale) // 아이템 정보를 인텐트에 담아 전달할 수 있습니다.
+            intent.putExtra("ITEM_PRICE", item.price.toString()) // 아이템 정보를 인텐트에 담아 전달할 수 있습니다.
+            intent.putExtra("ITEM_CON", item.content) // 아이템 정보를 인텐트에 담아 전달할 수 있습니다.
+
+            context.startActivity(intent)
+
         }
     }
     override fun getItemCount() = items.size
