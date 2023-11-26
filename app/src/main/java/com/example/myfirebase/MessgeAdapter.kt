@@ -11,16 +11,16 @@ import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.QueryDocumentSnapshot
 import com.google.firebase.ktx.Firebase
 
-data class Item(val id: String, val subject:String,val sale: String,val content :String, val price: Int) {
+data class Message(val id: String, val subject:String,val sale: String,val content :String, val price: Int) {
     constructor(doc: QueryDocumentSnapshot) :
             this(doc.id, doc["subject"].toString(),doc["sale"].toString(),doc["content"].toString(), doc["price"].toString().toIntOrNull() ?: 0)
     constructor(key: String, map: Map<*, *>) :
             this(key, map["subject"].toString(),map["sale"].toString(),map["content"].toString(), map["price"].toString().toIntOrNull() ?: 0)
 }
 
-class MyViewHolder(val view: View) : RecyclerView.ViewHolder(view)
+class MyMessageHolder(val view: View) : RecyclerView.ViewHolder(view)
 
-class MyAdapter(private val context: Context, private var items: List<Item>)
+class MessageAdater(private val context: Context, private var items: List<Item>)
     : RecyclerView.Adapter<MyViewHolder>() {
 
     fun interface OnItemClickListener {

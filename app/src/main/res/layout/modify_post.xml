@@ -9,21 +9,23 @@
         android:id="@+id/modify"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="64dp"
-        android:text="판매자에게 메시지 보내기"
+        android:text="수정하기"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout4" />
 
     <LinearLayout
+        android:id="@+id/linearLayout4"
+        app:layout_constraintBottom_toTopOf="@+id/modify"
+        app:layout_constraintTop_toTopOf="parent"
         android:layout_width="360dp"
         android:layout_height="506dp"
         android:orientation="vertical"
-        app:layout_constraintBottom_toTopOf="@+id/modify"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:layout_editor_absoluteX="23dp">
+        tools:layout_editor_absoluteX="25dp"
+        tools:layout_editor_absoluteY="36dp">
 
-        <TextView
+        <EditText
             android:id="@+id/subject"
             android:layout_width="match_parent"
             android:layout_height="79dp"
@@ -39,26 +41,25 @@
             android:text="판매자"
             android:textAlignment="textEnd" />
 
-        <TextView
+        <EditText
             android:id="@+id/value"
             android:layout_width="341dp"
             android:layout_height="47dp"
             android:text="가격"
             android:textAlignment="textEnd" />
 
-        <TextView
+        <EditText
             android:id="@+id/isSale"
             android:layout_width="341dp"
             android:layout_height="69dp"
             android:text="판매여부"
             android:textAlignment="textEnd" />
 
-        <TextView
+        <EditText
             android:id="@+id/content"
             android:layout_width="343dp"
             android:layout_height="203dp"
             android:text="내용"
             android:textAlignment="center" />
     </LinearLayout>
-
 </androidx.constraintlayout.widget.ConstraintLayout>

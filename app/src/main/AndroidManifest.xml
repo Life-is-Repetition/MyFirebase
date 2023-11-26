@@ -24,11 +24,15 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity" />
         <activity android:name=".SiginUpActivity" />
-        <activity android:name=".ViewActivity"/>
+        <activity android:name=".MainActivity"/>
         <activity android:name=".ItemDetailsActivity"/>
         <activity android:name=".SendActivity"/>
+        <activity android:name=".SaleItemActivity"/>
+        <activity android:name=".EditSaleItemActivity"/>
+        <activity android:name=".Messages"/>
+
+
 
 
 

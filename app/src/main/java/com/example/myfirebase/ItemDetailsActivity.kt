@@ -21,23 +21,25 @@ class ItemDetailsActivity : AppCompatActivity() {
 
         val subject=findViewById<TextView>(R.id.subject)
         val content=findViewById<TextView>(R.id.content)
-        val price=findViewById<TextView>(R.id.textView3)
-        val sale=findViewById<TextView>(R.id.textView4)
-        val name=findViewById<TextView>(R.id.textView10)
+        val name=findViewById<TextView>(R.id.saling)
+        val price=findViewById<TextView>(R.id.value)
+        val sale=findViewById<TextView>(R.id.isSale)
 
-        name.text = "$itemId"
         subject.text = "$itemSUB"
-        content.text = "$itemId"
+        name.text = "$itemId"
         price.text = "$itemPRICE"
         sale.text = "$itemSALE"
         content.text = "$itemCON"
 
 
-        val button=findViewById<Button>(R.id.button2)
+        val button=findViewById<Button>(R.id.modify)
         button.setOnClickListener {
-            startActivity(
-                Intent(this, SendActivity::class.java)
-            )
+            val sendIntent = Intent(this, SendActivity::class.java)
+            // 현재 보내는 사람의 아이디와 글 작성자의 아이디를 SendActivity로 전달
+            sendIntent.putExtra("SUBJECT", itemSUB)
+            sendIntent.putExtra("SENDER_ID", itemId)
+            sendIntent.putExtra("POST_AUTHOR_ID", itemId)
+            startActivity(sendIntent)
             finish()
         }
     }

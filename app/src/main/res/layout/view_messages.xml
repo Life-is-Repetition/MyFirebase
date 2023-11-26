@@ -5,23 +5,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <Button
-        android:id="@+id/modify"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="64dp"
-        android:text="판매자에게 메시지 보내기"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
     <LinearLayout
-        android:layout_width="360dp"
-        android:layout_height="506dp"
+        android:layout_width="353dp"
+        android:layout_height="517dp"
         android:orientation="vertical"
-        app:layout_constraintBottom_toTopOf="@+id/modify"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:layout_editor_absoluteX="23dp">
+        tools:layout_editor_absoluteX="29dp">
 
         <TextView
             android:id="@+id/subject"
@@ -36,21 +26,7 @@
             android:id="@+id/saling"
             android:layout_width="341dp"
             android:layout_height="40dp"
-            android:text="판매자"
-            android:textAlignment="textEnd" />
-
-        <TextView
-            android:id="@+id/value"
-            android:layout_width="341dp"
-            android:layout_height="47dp"
-            android:text="가격"
-            android:textAlignment="textEnd" />
-
-        <TextView
-            android:id="@+id/isSale"
-            android:layout_width="341dp"
-            android:layout_height="69dp"
-            android:text="판매여부"
+            android:text="보낸사람"
             android:textAlignment="textEnd" />
 
         <TextView
